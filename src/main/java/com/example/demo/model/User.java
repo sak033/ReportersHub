@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Entity
 @Getter
@@ -20,7 +22,9 @@ public class User {
     private String email;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
-    private String role;
-
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.USER;
     private LocalDateTime createdAt = LocalDateTime.now();
+
+
 }
