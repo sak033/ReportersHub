@@ -25,6 +25,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role = Role.USER;
     private LocalDateTime createdAt = LocalDateTime.now();
+    private ReporterStatus reporterStatus;
 
 
 }
