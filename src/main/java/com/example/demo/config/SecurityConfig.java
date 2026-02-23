@@ -32,6 +32,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/users").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/reporters/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/articles/public").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(

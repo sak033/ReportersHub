@@ -25,11 +25,14 @@ public class UserController {
     }
     @PostMapping
     public User createUser(@RequestBody User user) {
-
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+            throw new RuntimeException("Email already exists");
+        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.USER);
         user.setReporterStatus(ReporterStatus.NONE);
         return userRepository.save(user);
+
 
     }
 
